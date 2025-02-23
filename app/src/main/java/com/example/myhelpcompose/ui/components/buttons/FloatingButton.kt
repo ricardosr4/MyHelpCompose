@@ -62,6 +62,10 @@ fun FloatingButtonExamples() {
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewFloatingButtonExamples() {
-    FloatingButtonExamples()
+fun PreviewFloatingActionButtonExamples() {
+    Column {
+        FloatingButtonExamples()
+
+
+    }
 }
