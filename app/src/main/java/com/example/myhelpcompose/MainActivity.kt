@@ -4,9 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.example.myhelpcompose.ui.components.buttons.ButtonExamples
-import com.example.myhelpcompose.ui.components.checkBox.PreviewCheckBoxExamples
-import com.example.myhelpcompose.ui.components.textfields.PreviewTextFieldExamples
+import com.example.myhelpcompose.ui.components.pickers.DatePickerExample
 import com.example.myhelpcompose.ui.theme.MyHelpComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -15,7 +13,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MyHelpComposeTheme {
-                PreviewCheckBoxExamples()
+               DatePickerExample()
             }
         }
     }
