@@ -1,4 +1,4 @@
-package com.example.myhelpcompose.ui.components.buttons
+package com.example.myhelpcompose.ui.components.buttons.custom
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
@@ -74,6 +74,7 @@ fun ButtonExamples() {
         Spacer(modifier = Modifier.height(16.dp))
     }
 }
+
 @Composable
 fun CustomPrimaryButton() {
     Button(
@@ -101,13 +102,15 @@ fun CustomPrimaryButton() {
         )
     }
 }
+
 @Composable
 fun Spacer() {
     Spacer(modifier = Modifier.height(16.dp))
 
 }
+
 @Composable
-fun CustomOutlinedButton() {
+fun CustomOutlinedButton() { //agregar parametros para hacerlo custom
     OutlinedButton(
         onClick = { println("Outlined Button Clicked") },
         modifier = Modifier
@@ -128,6 +131,7 @@ fun CustomOutlinedButton() {
         )
     }
 }
+
 @Composable
 fun CustomTextButton() {
     TextButton(
@@ -149,6 +153,7 @@ fun CustomTextButton() {
         )
     }
 }
+
 @Composable
 fun CustomElevatedButton() {
     ElevatedButton(
@@ -176,6 +181,7 @@ fun CustomElevatedButton() {
         )
     }
 }
+
 @Composable
 fun CustomFilledTonalButton() {
     FilledTonalButton(
@@ -198,3 +204,7 @@ fun CustomFilledTonalButton() {
         )
     }
 }
+
+
+
+
