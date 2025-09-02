@@ -192,48 +192,57 @@ private fun DrawerItem(
 object DrawerItems {
     val HOME = DrawerItem(
         title = "Inicio",
-        icon = Icons.Default.Home
+        icon = Icons.Default.Home,
+        route = "home"
     )
 
     val PROFILE = DrawerItem(
         title = "Perfil",
-        icon = Icons.Default.Person
+        icon = Icons.Default.Person,
+        route = "profile"
     )
 
     val SETTINGS = DrawerItem(
         title = "Configuración",
-        icon = Icons.Default.Settings
+        icon = Icons.Default.Settings,
+        route = "settings"
     )
 
     val FAVORITES = DrawerItem(
         title = "Favoritos",
-        icon = Icons.Default.Favorite
+        icon = Icons.Default.Favorite,
+        route = "favorites"
     )
 
     val SEARCH = DrawerItem(
         title = "Buscar",
-        icon = Icons.Default.Search
+        icon = Icons.Default.Search,
+        route = "search"
     )
 
     val NOTIFICATIONS = DrawerItem(
         title = "Notificaciones",
         icon = Icons.Default.Notifications,
-        badgeCount = 3
+        badgeCount = 3,
+        route = "notifications"
     )
 
     val HELP = DrawerItem(
         title = "Ayuda",
-        icon = Icons.Default.Help
+        icon = Icons.Default.Help,
+        route = "help"
     )
 
     val ABOUT = DrawerItem(
         title = "Acerca de",
-        icon = Icons.Default.Info
+        icon = Icons.Default.Info,
+        route = "about"
     )
 
     val LOGOUT = DrawerItem(
         title = "Cerrar Sesión",
-        icon = Icons.Default.ExitToApp
+        icon = Icons.Default.ExitToApp,
+        route = "logout"
     )
 
     // Separadores

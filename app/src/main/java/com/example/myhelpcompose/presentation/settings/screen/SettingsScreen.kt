@@ -1,4 +1,4 @@
-package com.example.myhelpcompose.presentation.profile.screen
+package com.example.myhelpcompose.presentation.settings.screen
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -40,16 +40,15 @@ import com.example.myhelpcompose.presentation.navigation.Screen
 import kotlinx.coroutines.launch
 
 @Composable
-fun ProfileScreen(
+fun SettingsScreen(
     navController: NavController
 ){
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     var selectedDrawerItem by remember { mutableStateOf("Inicio") }
     val snackBackHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
-    var currentTab by remember { mutableIntStateOf(2) }
+    var currentTab by remember { mutableIntStateOf(3) }
 
-    // ← ModalNavigationDrawer va fuera del Scaffold
     ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = {
@@ -106,9 +105,9 @@ fun ProfileScreen(
 
             topBar = {
                 TopAppBar(
-                    title = "Perfil",
-                    showMenuButton = true,  // ← AGREGADO: Botón hamburguesa
-                    onMenuClick = {         // ← AGREGADO: Función para abrir drawer
+                    title = "Configuración",
+                    showMenuButton = true,
+                    onMenuClick = {
                         scope.launch {
                             drawerState.open()
                         }
@@ -128,14 +127,10 @@ fun ProfileScreen(
                             isAction = true,
                             action = {
                                 // Tu lógica de logout aquí
-                                // Por ejemplo:
-                                // viewModel.logout()
-                                // navController.navigate("login_screen") { popUpTo(0) { inclusive = true } }
                             }
                         )
                     ),
                     onMenuItemClick = { menuItem ->
-                        // ← SIMPLIFICADO: solo navegación (items con isAction = false)
                         navController.navigate(menuItem.route) {
                             popUpTo(navController.graph.startDestinationId) { saveState = true }
                             launchSingleTop = true
@@ -183,12 +178,12 @@ fun ProfileScreen(
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    "My Profile",
+                    "Pantalla de Configuración",
                     modifier = Modifier.clickable {
                         scope.launch {
                             snackBackHostState.showSnackbar(
-                                message = "Eres el Mejor",
-                                actionLabel = "eliminar"
+                                message = "Configurando...",
+                                actionLabel = "guardar"
                             )
                         }
                     }

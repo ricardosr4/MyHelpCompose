@@ -65,6 +65,20 @@ fun HomeScreen(
                 selectedItem = selectedDrawerItem,
                 onItemClick = { item ->
                     selectedDrawerItem = item.title
+                    when (item.route) {
+                        "logout" -> {
+                            // Lógica de logout aquí
+                        }
+                        else -> {
+                            item.route?.let { route ->
+                                navController.navigate(route) {
+                                    popUpTo(navController.graph.startDestinationId) { saveState = true }
+                                    launchSingleTop = true
+                                    restoreState = true
+                                }
+                            }
+                        }
+                    }
                     scope.launch {
                         drawerState.close()
                     }
@@ -149,10 +163,11 @@ fun HomeScreen(
                     onItemClick = { index ->
                         currentTab = index
                         val route = when (index) {
+                            0 -> Screen.Home.route
                             1 -> Screen.Search.route
                             2 -> Screen.Profile.route
                             3 -> Screen.Settings.route
-                            else -> Screen.Home.route
+                            else -> Screen.Favorites.route
                         }
                         navController.navigate(route) {
                             popUpTo(navController.graph.startDestinationId) { saveState = true }
