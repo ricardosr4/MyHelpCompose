@@ -102,19 +102,37 @@ fun ProfileScreen(
                     showMoreButton = true,
                     menuItems = listOf(
                         MenuItem(
-                            "Configuración",
-                            Icons.Default.Settings
-                        ) { /* ir a config */ },
+                            title = "Configuración",
+                            icon = Icons.Default.Settings,
+                            route = Screen.Settings.route,
+                            isAction = false
+                        ),
                         MenuItem(
-                            "Cerrar sesión",
-                            Icons.AutoMirrored.Filled.ExitToApp
-                        ) { /* logout */ }
-                    )
+                            title = "Cerrar sesión",
+                            icon = Icons.AutoMirrored.Filled.ExitToApp,
+                            route = "logout",
+                            isAction = true,
+                            action = {
+                                // Tu lógica de logout aquí
+                                // Por ejemplo:
+                                // viewModel.logout()
+                                // navController.navigate("login_screen") { popUpTo(0) { inclusive = true } }
+                            }
+                        )
+                    ),
+                    onMenuItemClick = { menuItem ->
+                        // ← SIMPLIFICADO: solo navegación (items con isAction = false)
+                        navController.navigate(menuItem.route) {
+                            popUpTo(navController.graph.startDestinationId) { saveState = true }
+                            launchSingleTop = true
+                            restoreState = true
+                        }
+                    }
                 )
             },
-//            snackbarHost = { SnackbarHost(hostState = snackBackHostState) },
-//
-//            floatingActionButton = { MyFloatingActionButton() },
+            snackbarHost = { SnackbarHost(hostState = snackBackHostState) },
+
+            floatingActionButton = { MyFloatingActionButton() },
 
             floatingActionButtonPosition = FabPosition.Center,
 
@@ -134,7 +152,7 @@ fun ProfileScreen(
                             1 -> Screen.Search.route
                             2 -> Screen.Profile.route
                             3 -> Screen.Settings.route
-                            else -> Screen.Home.route// si agregas Favorites al sealed class
+                            else -> Screen.Home.route
                         }
                         navController.navigate(route) {
                             popUpTo(navController.graph.startDestinationId) { saveState = true }
@@ -163,5 +181,4 @@ fun ProfileScreen(
             }
         }
     }
-
 }

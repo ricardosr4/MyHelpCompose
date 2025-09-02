@@ -31,6 +31,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
  * @param onMenuClick Callback para botón de menú
  * @param onMoreClick Callback para botón de más opciones
  * @param menuItems Lista de items del menú desplegable
+ * @param onMenuItemClick Callback para items de navegación (no acciones)
  * @param modifier Modifier para personalizar el componente
  */
 @OptIn(ExperimentalMaterial3Api::class)
@@ -45,6 +46,7 @@ fun TopAppBar(
     onMenuClick: (() -> Unit)? = null,
     onMoreClick: (() -> Unit)? = null,
     menuItems: List<MenuItem> = emptyList(),
+    onMenuItemClick: ((MenuItem) -> Unit)? = null,
 
 ) {
     var showDropdownMenu by remember { mutableStateOf(false) }
@@ -87,7 +89,13 @@ fun TopAppBar(
                         DropdownMenuItem(
                             text = { Text(text = item.title) },
                             onClick = {
-                                item.onClick()
+                                if (item.isAction && item.action != null) {
+                                    // ← NUEVO: Ejecutar función directamente si es una acción
+                                    item.action()
+                                } else {
+                                    // ← CAMBIADO: Solo llamar a onMenuItemClick para navegación
+                                    onMenuItemClick?.invoke(item)
+                                }
                                 showDropdownMenu = false
                             },
                             leadingIcon = {
@@ -119,5 +127,7 @@ fun TopAppBar(
 data class MenuItem(
     val title: String,
     val icon: ImageVector? = null,
-    val onClick: () -> Unit
+    val route: String,  // ← Siempre requerido
+    val isAction: Boolean = false,  // ← NUEVO: true = función, false = navegación
+    val action: (() -> Unit)? = null  // ← NUEVO: función si isAction = true
 )
