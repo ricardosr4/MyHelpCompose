@@ -41,6 +41,7 @@ fun TextExamples() {
 
         // Headline1 Text
         Text(text = "Headline1 Example", style = MaterialTheme.typography.headlineLarge)
+
         Spacer(modifier = Modifier.height(16.dp))
 
         // Body Text
@@ -57,6 +58,10 @@ fun TextExamples() {
 
         // Overline Text
         Text(text = "Overline Example", style = MaterialTheme.typography.bodyLarge)
+        Spacer(modifier = Modifier.height(16.dp))
+
+        //Texto para redireccion
+        ZetaTextLink(text = "Para más información", textLink = "Click aquí") { }
     }
 }
 

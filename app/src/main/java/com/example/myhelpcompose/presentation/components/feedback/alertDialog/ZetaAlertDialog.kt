@@ -1,4 +1,4 @@
-package com.example.myhelpcompose.presentation.components.feedback.alertDialog.generic
+package com.example.myhelpcompose.presentation.components.feedback.alertDialog
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box

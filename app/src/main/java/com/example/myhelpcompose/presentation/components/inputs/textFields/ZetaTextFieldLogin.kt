@@ -32,65 +32,7 @@ fun PreviewZetaAlertDialog() {
         .fillMaxSize()) {
 
     }
-    ZetaTextFieldLogin(
-        value = "",
-        onValueChange = {},
-        label = "Nombre",
-        keyboardType = KeyboardType.Text,
-        isPassword = false,
-        isPasswordVisible = false,
-        onVisibilityToggle = null,
-        leadingIcon = null,
 
-    )
 }
 
 
-@Composable
-fun ZetaTextFieldLogin(
-    modifier: Modifier = Modifier,
-    value: String,
-    onValueChange: (String) -> Unit,
-    label: String,
-    keyboardType: KeyboardType = KeyboardType.Text,
-    isPassword: Boolean = false,
-    isPasswordVisible: Boolean = false,
-    onVisibilityToggle: (() -> Unit)? = null,
-    leadingIcon: Painter? = null,
-){
-    OutlinedTextField(
-        value = value,
-        onValueChange = onValueChange,
-        label = { Text(text = label, color = Color.Gray) },
-        singleLine = true,
-        keyboardOptions = KeyboardOptions(keyboardType = keyboardType),
-        modifier = modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(20.dp),
-        visualTransformation = if (isPassword && !isPasswordVisible) PasswordVisualTransformation() else VisualTransformation.None,
-        leadingIcon = {
-            leadingIcon?.let {
-                Icon(
-                    painter = it,
-                    contentDescription = null,
-                    modifier = Modifier
-                        .padding(start = 8.dp)
-                        .size(20.dp)
-                )
-            }
-        },
-        trailingIcon = {
-            if (isPassword && onVisibilityToggle != null) {
-                IconButton(onClick = onVisibilityToggle) {
-                    Icon(
-                        imageVector = if (isPasswordVisible) Icons.Default.VisibilityOff else Icons.Default.Visibility,
-                        contentDescription = if (isPasswordVisible) "Ocultar contraseña" else "Mostrar contraseña"
-                    )
-                }
-            }
-        },
-//        colors = TextFieldDefaults.outlinedTextFieldColors(
-//            focusedBorderColor = Color.Blue,
-//            unfocusedBorderColor = Color.Gray,
-//        )
-    )
-}
