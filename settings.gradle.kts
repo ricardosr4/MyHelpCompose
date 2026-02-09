@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "MyHelpCompose"
 include(":app")
- 
+include(":architecturebasic")
