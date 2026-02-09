@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.navigation.compose.rememberNavController
 import com.example.myhelpcompose.core.theme.MyHelpComposeTheme
 import com.example.myhelpcompose.presentation.components.layout.card.CardTicket
+import com.example.myhelpcompose.presentation.home.screen.HuellaScreen
 import com.example.myhelpcompose.presentation.navigation.NavGraph
 
 class MainActivity : ComponentActivity() {
@@ -18,10 +19,7 @@ class MainActivity : ComponentActivity() {
 //                NavGraph(
 //                    navController = rememberNavController()
 //                )
-                CardTicket(
-                    onIncrement = {},
-                    onDecrement = {}
-                )
+                HuellaScreen()
             }
         }
     }
