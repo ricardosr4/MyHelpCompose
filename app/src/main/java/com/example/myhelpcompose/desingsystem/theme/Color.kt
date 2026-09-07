@@ -1,4 +1,4 @@
-package com.example.myhelpcompose.ui.theme
+package com.example.myhelpcompose.desingsystem.theme
 
 import androidx.compose.ui.graphics.Color
 
